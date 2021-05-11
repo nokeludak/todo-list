@@ -8,7 +8,7 @@ class TodoList extends Component {
             item: "",
         }
     ],
-    input: ""
+    
 }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class TodoList extends Component {
  
   addTodo = () => {
     localStorage.items = JSON.stringify([...this.state.todos, this.state]);
-    this.setState({ todos: [...this.state.todos, this.state], input: "" });
+    this.setState({ todos: [...this.state.todos, this.state], });
   };
 
   deleteTodo = (index) => {
@@ -48,8 +48,7 @@ class TodoList extends Component {
           type="text"
           placeholder="Enter a Todo..."
           onChange={this.newTodo}
-          value={this.state.input}
-         className="task-input" /> 
+          className="task-input" /> 
          
         <button className="button-add" onClick={this.addTodo}>Add</button>
         <TodoItem todos={this.state.todos} deletetodo={this.deleteTodo} />
