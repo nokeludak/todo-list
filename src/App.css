@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: linear-gradient(to right bottom, #021479, #271504);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .app-wrapper {
+      background-color: #7fb9c5;
+      min-width: 450px;
+      min-height: 650px;
+      padding: 30px;
+      box-sizing: border-box;
+      border-radius: 10px;
+  }
+  .header h1 {
+    color: white;
+    text-align: center;
+    margin: 30px 0;
+    
+  }
+
+  .task-input {
+      outline: none;
+      width: 260px;
+      padding: 15px;
+      margin-right: 25px;
+      font-size: 20px;
+      color: #ccc;
+      background-color: #000000;
+      border: 1px solid #c89666;
+      border-radius: 10px;
+  }
+  .button-add {
+      width: 70px;
+      padding: 15px 15px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: 0;
+      background-color: #d1af71;
+      cursor: pointer;
+  }
+  .list-item {
+      display: flex;
+  }
+  .tekst {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .item {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(0, 0, 0);
+    margin-top: 5px;
+    color:#7fb9c5;
+    width: 150px;
+    word-wrap: break-word;
+ }
