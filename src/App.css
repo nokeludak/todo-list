@@ -60,7 +60,9 @@
     background-color: rgb(0, 0, 0);
     margin-top: 5px;
     color:#7fb9c5;
-    width: 150px;
+    width: 200px;
     word-wrap: break-word;
     border: 2px solid #ffffff;
+    border-radius: 5px;
+    
  }

@@ -23,7 +23,7 @@ class TodoList extends Component {
   newTodo = (e) => {
     this.setState({
       item: e.target.value,
-      input: e.target.value,
+      
     });
   };
 
