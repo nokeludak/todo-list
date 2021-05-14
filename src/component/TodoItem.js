@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const TodoItem = ({todos, deletetodo}) => {
+const TodoItem = ({ todos, removeTodo }) => {
   return (
-    todos.map((todo, index) => {
-        let item;
-        (index) ? (item =<div className='item' key={index} onClick={() => { deletetodo(index) }}>
-            {todo.item}
-        </div>) : (item =  <p key={index}></p>)
-        return item;
-    })
-);
-}
+    <div id="item">
+      {todos.map((todo) => (
+        <div className="color" key={todo.id} onClick={() => removeTodo(todo.id)}>
+          <p>{todo.todo}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default TodoItem;

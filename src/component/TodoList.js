@@ -1,61 +1,53 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 
-class TodoList extends Component {
-  state = {
-    todos: [
-        {
-            item: "",
-        }
-    ],
-    
-}
+function TodoList(){
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
 
-  componentDidMount() {
-    let items = [];
-    if (localStorage.items) {
-      items = JSON.parse(localStorage.items);
-    }
-    this.setState({
-      todos: items,
-    });
-  }  
-  newTodo = (e) => {
-    this.setState({
-      item: e.target.value,
-      
-    });
-  };
+  const save = (newTodos) => {
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+  }
+ useEffect(() => {
+   if (localStorage.getItem("todos")) {
+     setTodos(JSON.parse(localStorage.getItem("todos")));
+   }
+ }, []);
 
- 
-  addTodo = () => {
-    localStorage.items = JSON.stringify([...this.state.todos, this.state]);
-    this.setState({ todos: [...this.state.todos, this.state], });
-  };
+ const addTodo = () => {
+   if (newTodo) {
+     const newTodos = [...todos, { todo: newTodo, id: Date.now() }];
+     setTodos(newTodos);
+     setNewTodo("");
 
-  deleteTodo = (index) => {
-    const copyState = [...this.state.todos];
-    copyState.splice(index, 1);
-    localStorage.items = JSON.stringify(copyState);
-    this.setState({ todos: copyState });
-  };
-  render() {
+    save(newTodos);
+   }
+ };
+ const removeTodo = (id) => {
+   const newTodos = todos.filter((todo) => todo.id !== id);
+   setTodos(newTodos);
+
+   save(newTodos);
+ }
     return (
       <div className="header">
         <h1>Todo List</h1>
-        
+        <form>
         <input
           type="text"
+          id="todo"
           placeholder="Enter a Todo..."
-          onChange={this.newTodo}
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
           className="task-input" /> 
          
-        <button className="button-add" onClick={this.addTodo}>Add</button>
-        <TodoItem todos={this.state.todos} deletetodo={this.deleteTodo} />
+        <button style={{ postition: ''}} className="button-add" onClick={addTodo}>Add</button>
+        <TodoItem todos={todos} removeTodo={removeTodo} />
+      </form>
       </div>
     );
   }
-}
+
 export default TodoList;
 
 

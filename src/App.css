@@ -34,7 +34,6 @@
       font-size: 20px;
       color: #ccc;
       background-color: #000000;
-      border: 2px solid #ffffff;
       border-radius: 10px;
   }
   .button-add {
@@ -59,10 +58,25 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(0, 0, 0);
     margin-top: 5px;
-    color:#7fb9c5;
+    color:#2b9cb3;
     width: 200px;
     word-wrap: break-word;
     border: 2px solid #ffffff;
     border-radius: 5px;
     
  }
+ .color {
+     color: coral;
+     border-radius: 5px;
+     border: 0;
+     background-color: #000000;
+     color: #7fb9c5;
+     cursor: pointer;
+     padding-left: 10px;
+     margin-bottom: 3px;
+     width: 260px;
+     word-wrap: break-word;
+     overflow: visible;
+
+ }
+ 
