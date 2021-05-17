@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 
 function TodoList(){
-  
+  const [requiredMessage, setMessage] = useState("")
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   
@@ -17,11 +17,11 @@ function TodoList(){
  }, []);
 
  const addTodo = () => {
-   if (newTodo) {
+   if (!newTodo)setMessage('*This field is required');{
      const newTodos = [...todos, { todo: newTodo, id: Date.now() }];
      setTodos(newTodos);
      setNewTodo("");
-    
+     
     save(newTodos);
     
    }
@@ -43,10 +43,11 @@ function TodoList(){
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
           className="task-input" 
-          required
+          
           />
-    
-        <button style={{ postition: ''}} className="button-add" onClick={addTodo}>Add</button>
+          <button style={{ postition: ''}} className="button-add" onClick={addTodo}>Add</button>
+      <div className='msg'> {requiredMessage}</div>
+        
         <TodoItem todos={todos} removeTodo={removeTodo} />
       </form>
       </div>
