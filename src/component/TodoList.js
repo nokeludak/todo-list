@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 
 function TodoList(){
+  
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  
 
   const save = (newTodos) => {
     localStorage.setItem("todos", JSON.stringify(newTodos));
@@ -19,8 +21,9 @@ function TodoList(){
      const newTodos = [...todos, { todo: newTodo, id: Date.now() }];
      setTodos(newTodos);
      setNewTodo("");
-
+    
     save(newTodos);
+    
    }
  };
  const removeTodo = (id) => {
@@ -39,8 +42,10 @@ function TodoList(){
           placeholder="Enter a Todo..."
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          className="task-input" /> 
-         
+          className="task-input" 
+          required
+          />
+    
         <button style={{ postition: ''}} className="button-add" onClick={addTodo}>Add</button>
         <TodoItem todos={todos} removeTodo={removeTodo} />
       </form>
