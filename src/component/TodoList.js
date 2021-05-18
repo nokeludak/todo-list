@@ -16,16 +16,18 @@ function TodoList(){
    }
  }, []);
 
+
  const addTodo = () => {
-   if (!newTodo)setMessage('*This field is required');{
-     const newTodos = [...todos, { todo: newTodo, id: Date.now() }];
-     setTodos(newTodos);
-     setNewTodo("");
-     
+  let message='Required field';
+  if(!newTodo){setMessage(message)}
+ else {
+    let newTodos = [...todos, { todo: newTodo, id: Date.now() }];
+    setTodos(newTodos);
+    setNewTodo("");
     save(newTodos);
-    
-   }
- };
+    setMessage('');
+  }
+};
  const removeTodo = (id) => {
    const newTodos = todos.filter((todo) => todo.id !== id);
    setTodos(newTodos);
